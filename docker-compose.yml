@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  dvwa:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: dvwa
+      MYSQL_USER: dvwa
+      MYSQL_PASSWORD: p@ssw0rd
+      MYSQL_ROOT_PASSWORD: p@ssw0rd
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - 3306:3306
